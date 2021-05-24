@@ -78,7 +78,7 @@
 					</div>
 				</div>
 
-				{{$model->reac}}
+				{{$model->reac->count()}}
 
 				<div class="card">
 					<div class="card-header">

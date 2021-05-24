@@ -188,14 +188,17 @@
                     <div class="card-body">
                         @foreach($top as $tops)
                         <div class="d-flex align-items-start">
+                           
                             @if(file_exists($tops->page->page_pic))
                             <img src="{{$tops->page->page_pic}}" style="width:36px; height: 36px; object-fit: cover;" class="rounded-circle mr-2" >
                             @else
                             <img src="/img/avatars/nopage.jpg" style="width:36px; height: 36px; object-fit: cover;" class="rounded-circle mr-2" >
                             @endif
                             <div class="flex-grow-1">
-                                
-                                <div><a href="/page/{{$tops->page->page_id}}">{{$tops->page->page_name ?? $tops->profile->profile_name ?? ''}} </a></div>
+                                <div>
+                                    <a href="/page/{{$tops->page->page_id}}">{{$tops->page->page_name ?? $tops->profile->profile_name ?? ''}} </a>
+                                </div>
+                                  <a href="/post/{{$tops->post_id}}">
                                 <small class="text-muted pr-3">{{$tops->post_message}}</small><br>
                                 <div class="clearfix"></div>
                                 <div class="pt-2">
@@ -204,6 +207,7 @@
                                     <button class="btn btn-outline-primary btn-sm rounded align-middle"><i class="align-middle" data-feather="share"></i> {{$tops->post_post_shares ?? '0'}} </button>
                                     <button class="btn btn-outline-primary btn-sm rounded align-middle"><i class="align-middle" data-feather="clock"></i> <span data-livestamp="{{strtotime($tops->post_inserted_date)}}"></span> </button>
                                 </div>
+                            </a>
                             </div>
                             <div class="float-right">
                                 @if(file_exists($tops->post_pic))
@@ -212,7 +216,8 @@
                                 <img src="/img/avatars/notfound.png" style="width: 100px; height: 100px; object-fit: cover;">
                                 @endif
                             </div>
-                        </div>
+
+                        </div> 
                         <hr>
                         @endforeach
                     </div>

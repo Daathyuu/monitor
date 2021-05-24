@@ -103,6 +103,7 @@ class HomeController extends Controller
         $comment = Post::where('post_root_id',$id)->sum('post_comments');
         $reaction = Post::where('post_root_id',$id)->sum('post_reactions');
 
+
         return view('page',[
             'model' => $model,
             'post' => $post,
@@ -110,6 +111,13 @@ class HomeController extends Controller
             'shares' => $shares,
             'comment' => $comment,
             'reaction' => $reaction
+        ]);
+    }
+
+    public function post($id){
+        $model = Post::where('post_id',$id)->firstOrFail();
+        return view('post',[
+            'model' => $model,
         ]);
     }
 }
